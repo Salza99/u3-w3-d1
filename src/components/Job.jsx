@@ -1,13 +1,13 @@
 import { Row, Col, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { SAVE_ON_FAVOURITE, saveOnFavouriteAction } from "../redux/actions";
 
 const Job = ({ data }) => {
   console.log(data);
 
   const dispatch = useDispatch();
   const disableButton = useSelector((state) => state.favouriteCompany.content);
-  console.log("dis ", typeof disableButton, "data ", typeof data.company_name);
   return (
     <Row className="mx-0 mt-3 p-3 align-items-center" style={{ border: "1px solid #00000033", borderRadius: 4 }}>
       <Col xs={3}>
@@ -21,7 +21,8 @@ const Job = ({ data }) => {
           }
           variant="warning"
           onClick={() => {
-            dispatch({ type: "SAVE_ON_FAVOURITE", payload: data.company_name });
+            // dispatch({ type: SAVE_ON_FAVOURITE, payload: data.company_name });
+            dispatch(saveOnFavouriteAction(data.company_name));
           }}
         >
           Save Company

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Col, Container, ListGroup, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { REMOVE_ITEM_FROM_FAVOURITE, removeItemFromFavouriteAction } from "../redux/actions";
 
 const Favourites = () => {
   const favourites = useSelector((state) => state.favouriteCompany.content);
@@ -43,7 +44,8 @@ const Favourites = () => {
                   <Button
                     variant="danger"
                     onClick={() => {
-                      removeFavourite({ type: "REMOVE_ITEM_FROM_FAVOURITE", payload: i });
+                      // removeFavourite({ type: REMOVE_ITEM_FROM_FAVOURITE, payload: i });
+                      removeFavourite(removeItemFromFavouriteAction(i));
                     }}
                   >
                     Remove
